@@ -1,11 +1,11 @@
+import fs from 'fs';
+import path from 'path';
+
 const cooldown = {}; // Objeto para almacenar los cooldowns de los grupos
 const COOLDOWN_TIME = 24 * 60 * 60 * 1000; // 24 horas en milisegundos
 
 const handler = async (m, { conn, participants, usedPrefix, command }) => {
     const chatId = m.chat;
-
-    // Verificar si el bot tiene permisos restrictivos habilitados
-    
 
     // Verificar si el comando está en cooldown para el grupo
     if (cooldown[chatId] && (Date.now() - cooldown[chatId]) < COOLDOWN_TIME) {
@@ -33,6 +33,15 @@ const handler = async (m, { conn, participants, usedPrefix, command }) => {
 
     // Configurar el grupo para que solo los administradores puedan hablar
     await conn.groupSettingUpdate(chatId, 'announcement');
+
+    // Cambiar la foto del grupo con una imagen de la carpeta ./media/
+    const imagePath = path.join(__dirname, './media/abyss3.png'); // Asegúrate de que la ruta y el nombre del archivo sean correctos
+    if (fs.existsSync(imagePath)) {
+        const imageBuffer = fs.readFileSync(imagePath);
+        await conn.groupUpdatePicture(chatId, imageBuffer);
+    } else {
+        console.error(`Imagen no encontrada en la ruta: ${imagePath}`);
+    }
 
     // Enviar el mensaje notificando que el grupo fue raideado 5 veces seguidas
     const mensajeRaid = "Este grupo fue raideado de bromi. ".repeat(40); // Ajusta la cantidad de repeticiones según lo necesites
