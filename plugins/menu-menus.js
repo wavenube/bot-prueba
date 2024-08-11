@@ -30,27 +30,39 @@ let tags = {
 }
 const defaultMenu = {
   before: `「 ${wm} 」
- 
-Hola 👋🏻 *%name*
- 
-*• Fecha:* ${fecha}
-*• Hora:* ${hora} (🇦🇷) 
-*• Usuario:* %totalreg
-*• Tiempo activos:* %muptime
+
+.╭━━❍Abyss - Bot❍━━╮
+ ┃ ╭━━━━━━━━━━━━━━━━╮ 
+ ┃ ┃ ╭┈────────────╮ 
+ ┃ ┃ │❍ 🅼🅴🅽🆄 ❍ 
+ ┃ ┃ ╰┈────────────╯ 
+ ┃ ╰━━━━━━━━━━━━━━━━╯ 
+ ┣━━━▢ ʙᴜᴇɴᴀꜱ, *%name*• 
+ ┃╭━━━━━━━━━━━━━━━━╾• 
+ ┃┃  ❍ 1.0 ❍ 
+ ┃┣━━━━━━━━━━━━━━━━╾• 
+ ┃┃ ⋄ ᴄʀᴇᴀᴅᴏʀ ᴅᴇʟ ʙᴏᴛ:  Shizu-Hub 
+ ┃┃ ⋄ ꜰᴇᴄʜᴀ » ${fecha}
+ ┃┃ ⋄ ᴛɪᴇᴍᴘᴏ ᴀᴄᴛɪᴠᴏ » %muptime %sbot
+ ┃┃ ⋄ ʟᴇɴɢᴜᴀᴊᴇ » ꜱᴘᴀɴɪꜱʜ 
+ ┃┃ ⋄ ᴜꜱᴜᴀʀɪᴏꜱ » %rtotalreg de %totalreg
+ ┃╰━━━━━━━━━━━━━━━━╾• 
+ ╰━━━╼Abyss - Bot╾━━━╯ 
 ${(conn.user.jid == global.conn.user.jid ? `*• Bot Ofc:* wa.me/${global.conn.user.jid.split`@`[0]}` : `*• Soy un sub bot del:* wa.me/${global.conn.user.jid.split`@`[0]}`) || ''}
 
-*• Tu limite:* %limit
-*• Nivel:* %level
-*• Rango:* %role
-*• Exp:* %totalexp XP 
+ ╭━━━━━━━━━━━━━━━━╮
+     INFO DEL USUARIO          
+ ╭━━━━━━━━━━━━━━━━╯
+ ║👤 NOMBRE: %name 
+ ║🧰 EXPERIENCIA ➟ %totalexp XP
+ ║⚓ RANGO ➟ %role
+ ║💎 DIAMANTES ➟ %limit 
+ ╰═══════════════ ✧  
 
-*• Usuario registrados:* %rtotalreg de %totalreg
-
-*\`✅ Activar tu bot 24/7 activo en Infinity-Host\`*
-https://youtu.be/o6ZSpMOsvHs?si=Kp2swTeJOUYSg8wn
+*\`✅ Recuerda unirte al grupo ofc del Bot\`*
 `.trimStart(),
-  header: '◉ %category  ',
-  body: ' ║\n╠ ○%cmd %islimit %isPremium',
+  header: '▢ %category  ',
+  body: ' ║\n║ ○%cmd %islimit %isPremium',
   footer: `╚• \n`,
   after: `
 `,
@@ -165,7 +177,7 @@ throw e
 handler.help = ['help']
 handler.tags = ['main']
 //handler.command = ['menucompleto', 'help', 'fullmenu'] 
-handler.command = /^(menu|menú|memu|memú|help|info|comandos|2help|menu1.2|ayuda|commands|commandos|m|\?)$/i
+handler.command = /^(allmenu|allmenú|allmemu|allmemú|allhelp|allinfo|allcomandos|2help|menu1.2|ayuda|commands|commandos|m|\?)$/i
 handler.register = false
 
 handler.exp = 3
