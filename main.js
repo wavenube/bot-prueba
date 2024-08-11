@@ -153,7 +153,7 @@ console.log(chalk.bgBlack(chalk.bold.redBright("\n\n✴️ Su número debe comen
 process.exit(0)
 }} else {
 while (true) {
-addNumber = await question(chalk.bgBlack(chalk.bold.greenBright("\n\n✳️ Escriba su numero\n\nEjemplo: 5491168xxxx\n\n\n\n")))
+addNumber = await question(chalk.bgBlack(chalk.bold.greenBright("\n\n✳️ Escriba su numero\n\nEjemplo: 549261361xxxx\n\n\n\n")))
 addNumber = addNumber.replace(/[^0-9]/g, '')
   
 if (addNumber.match(/^\d+$/) && Object.keys(PHONENUMBER_MCC).some(v => addNumber.startsWith(v))) {
