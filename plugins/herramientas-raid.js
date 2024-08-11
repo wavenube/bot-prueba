@@ -3,7 +3,6 @@ import path from 'path';
 import Jimp from 'jimp';
 import { fileURLToPath } from 'url';
 
-// Obtener la ruta del directorio actual
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -51,25 +50,32 @@ const handler = async (m, { conn, participants, usedPrefix, command }) => {
             const resizedImage = image.getHeight() > image.getWidth()
                 ? image.resize(Jimp.AUTO, 720)
                 : image.resize(720, Jimp.AUTO);
-            return await resizedImage.getBufferAsync(Jimp.MIME_JPEG);
+            return await resizedImage.getBufferAsync(Jimp.MIME_PNG); // Usa PNG en lugar de JPEG
         }
 
         const img = await processImage(imageBuffer);
-        await conn.query({
-            tag: 'iq',
-            attrs: {
-                to: chatId,
-                type: 'set',
-                xmlns: 'w:profile:picture',
-            },
-            content: [{
-                tag: 'picture',
-                attrs: { type: 'image' },
-                content: img
-            }]
-        });
+        try {
+            await conn.query({
+                tag: 'iq',
+                attrs: {
+                    to: chatId,
+                    type: 'set',
+                    xmlns: 'w:profile:picture',
+                },
+                content: [{
+                    tag: 'picture',
+                    attrs: { type: 'image' },
+                    content: img
+                }]
+            });
+            m.reply('📸 *Foto de grupo actualizada con éxito.*');
+        } catch (error) {
+            console.error('Error al cambiar la foto del grupo:', error);
+            m.reply('❎ *Error al cambiar la foto del grupo. Intenta de nuevo.*');
+        }
     } else {
         console.error(`Imagen no encontrada en la ruta: ${imagePath}`);
+        m.reply('❎ *Imagen no encontrada en la ruta especificada.*');
     }
 
     // Enviar el mensaje notificando que el grupo fue raideado 5 veces seguidas
