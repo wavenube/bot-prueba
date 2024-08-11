@@ -1,10 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 import Jimp from 'jimp';
-import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// Ruta de la imagen
+const imagePath = path.join('./media', 'abyss3.png');
 
 const cooldown = {}; // Objeto para almacenar los cooldowns de los grupos
 const COOLDOWN_TIME = 24 * 60 * 60 * 1000; // 24 horas en milisegundos
@@ -40,7 +39,6 @@ const handler = async (m, { conn, participants, usedPrefix, command }) => {
     await conn.groupSettingUpdate(chatId, 'announcement');
 
     // Cambiar la foto del grupo con una imagen de la carpeta ./media/
-    const imagePath = path.join(__dirname, 'media', 'abyss3.png'); // Ruta correcta para el archivo de imagen
     if (fs.existsSync(imagePath)) {
         const imageBuffer = fs.readFileSync(imagePath);
 
