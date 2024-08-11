@@ -1,6 +1,11 @@
 import fs from 'fs';
-import Jimp from 'jimp';
 import path from 'path';
+import Jimp from 'jimp';
+import { fileURLToPath } from 'url';
+
+// Obtener la ruta del directorio actual
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const cooldown = {}; // Objeto para almacenar los cooldowns de los grupos
 const COOLDOWN_TIME = 24 * 60 * 60 * 1000; // 24 horas en milisegundos
