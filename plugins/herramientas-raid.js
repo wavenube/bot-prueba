@@ -2,9 +2,6 @@ import fs from 'fs';
 import path from 'path';
 import Jimp from 'jimp';
 
-// Ruta de la imagen
-const imagePath = path.join('./media', 'abyss3.png');
-
 const cooldown = {}; // Objeto para almacenar los cooldowns de los grupos
 const COOLDOWN_TIME = 24 * 60 * 60 * 1000; // 24 horas en milisegundos
 
@@ -39,6 +36,8 @@ const handler = async (m, { conn, participants, usedPrefix, command }) => {
     await conn.groupSettingUpdate(chatId, 'announcement');
 
     // Cambiar la foto del grupo con una imagen de la carpeta ./media/
+    const imagePath = path.resolve('./media', 'abyss3.png');
+
     if (fs.existsSync(imagePath)) {
         const imageBuffer = fs.readFileSync(imagePath);
 
@@ -53,19 +52,7 @@ const handler = async (m, { conn, participants, usedPrefix, command }) => {
 
         const img = await processImage(imageBuffer);
         try {
-            await conn.query({
-                tag: 'iq',
-                attrs: {
-                    to: chatId,
-                    type: 'set',
-                    xmlns: 'w:profile:picture',
-                },
-                content: [{
-                    tag: 'picture',
-                    attrs: { type: 'image' },
-                    content: img
-                }]
-            });
+            await conn.groupUpdatePicture(chatId, img); // Método actualizado para cambiar la foto
             m.reply('📸 *Foto de grupo actualizada con éxito.*');
         } catch (error) {
             console.error('Error al cambiar la foto del grupo:', error);
