@@ -18,13 +18,13 @@ if (m.text.includes(linkThisGroup)) return !0
 if (m.text.includes(linkThisGroup2)) return !0
 if (m.text.includes(linkThisGroup3)) return !0
 }    
-await conn.sendMessage(m.chat, {text: `*「 ANTILINK DETECTADO 」*\n\n${user} 🤨 Rompiste las reglas del Grupo sera eliminado....`, mentions: [m.sender]}, {quoted: m})
-if (!isBotAdmin) return m.reply('*Te salvarte gil, no soy admin no te puedo eliminar*')  
+await conn.sendMessage(m.chat, {text: `*「 ANTILINK DETECTADO 」*\n\n${user} Tu comportamiento ha violado las reglas del grupo, y por eso serás eliminado...`, mentions: [m.sender]}, {quoted: m})
+if (!isBotAdmin) return m.reply('*Te salvaste esta vez, pero no soy admin, así que no puedo eliminarte. Recuerda seguir las reglas.*')  
 if (isBotAdmin) {
 await conn.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: bang, participant: delet }})
 let responseb = await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
 if (responseb[0].status === "404") return
-} else if (!bot.restrict) return m.reply('*𝙀𝙡 𝙥𝙧𝙤𝙥𝙞𝙚𝙩𝙖𝙧𝙞𝙤 𝙙𝙚𝙡 𝙗𝙤𝙩 𝙣𝙤 𝙩𝙞𝙚𝙣𝙚 𝙖𝙘𝙩𝙞𝙫𝙖𝙙𝙤 𝙚𝙡 𝙧𝙚𝙨𝙩𝙧𝙞𝙘𝙘𝙞𝙤́𝙣 (𝙚𝙣𝙖𝙗𝙡𝙚 𝙧𝙚𝙨𝙩𝙧𝙞𝙘𝙩) 𝙘𝙤𝙣𝙩𝙖𝙘𝙩𝙚 𝙘𝙤𝙣 𝙚𝙡 𝙥𝙖𝙧𝙖 𝙦𝙪𝙚 𝙡𝙤𝙨 𝙝𝙖𝙗𝙞𝙡𝙞𝙩𝙚*')
+} else if (!bot.restrict) return m.reply('*El propietario del bot no ha activado la restricción. Por favor, contacta con él para que las habilite.*')
 }
 return !0
 } 
