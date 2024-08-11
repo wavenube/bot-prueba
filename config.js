@@ -119,7 +119,7 @@ global.img = "https://qu.ax/Zgqq.jpg"
 global.img1 = 'https://qu.ax/hNJk.jpg'
 global.img2 = 'https://qu.ax/jzhN.jpg'
 
-global.imagen = fs.readFileSync('./abyss5.png')
+global.imagen = fs.readFileSync('./media/abyss5.png')
 global.imagen1 = fs.readFileSync('./media/abyss.png')
 global.imagen2 = fs.readFileSync('./media/abyss2.png')
 global.imagen3 = fs.readFileSync('./media/abyss3.png')
