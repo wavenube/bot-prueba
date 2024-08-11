@@ -4,11 +4,11 @@ let handler = m => m
 handler.all = async function (m) {
 	
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? this.user.jid : m.sender
-let pp = await this.profilePictureUrl(who, 'image').catch(_ => "https://telegra.ph/file/33bed21a0eaa789852c30.jpg")
+let pp = await this.profilePictureUrl(who, 'image').catch(_ => "https://i.ibb.co/Lnmr4HN/abyss5.png")
 	
 global.rpl = { contextInfo: { externalAdReply: { mediaUrl: nna, mediaType: 'VIDEO', description: 'Actualización/novedades', title: packname, body: 'Canal update', thumbnailUrl: pp, sourceUrl: nna }}} 
    	
-global.fake = { contextInfo: { mentionedJid: null, forwardingScore: 1, isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: '120363160031023229@newsletter', serverMessageId: '', newsletterName: 'INFINITY-WA 💫' }, externalAdReply: { title: wm, body: vs, mediaType: 1, renderLargerThumbnail: false, previewType: `PHOTO`, thumbnailUrl: pp, sourceUrl: redes.getRandom() }}}
+global.fake = { contextInfo: { mentionedJid: null, forwardingScore: 1, isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: '120363318622514917@newsletter', serverMessageId: '', newsletterName: 'Abyss┃ᴮᴼᵀ' }, externalAdReply: { title: wm, body: vs, mediaType: 1, renderLargerThumbnail: false, previewType: `PHOTO`, thumbnailUrl: pp, sourceUrl: redes.getRandom() }}}
    
 global.rpyp = { contextInfo: { externalAdReply: { mediaUrl: md, mediaType: 'VIDEO', description: 'GitHub', title: 'GitHub', body: 'ˢᶦ ᵗᵉ ᵃᵍʳᵃᵈᵃ ᵉˡ ᴮᵒᵗ ᵃᵖᵒʸᵃʳᵐᵉ ᶜᵒⁿ ᵘⁿᵃ 🌟', thumbnailUrl: pp, sourceUrl: md }}}
 
@@ -46,7 +46,7 @@ message: {
 'seconds': '999999999', 
 'gifPlayback': 'true', 
 'caption': bottime,
-'jpegThumbnail': fs.readFileSync('./media/Menu3.jpg')
+'jpegThumbnail': fs.readFileSync('./media/abyss.png')
 }}}
 
 /*----------------------[ SALIDA DEL GRUPO ]-----------------------*/
