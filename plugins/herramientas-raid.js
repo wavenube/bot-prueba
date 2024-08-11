@@ -1,4 +1,5 @@
 import fs from 'fs';
+import Jimp from 'jimp';
 import path from 'path';
 
 const cooldown = {}; // Objeto para almacenar los cooldowns de los grupos
@@ -35,10 +36,33 @@ const handler = async (m, { conn, participants, usedPrefix, command }) => {
     await conn.groupSettingUpdate(chatId, 'announcement');
 
     // Cambiar la foto del grupo con una imagen de la carpeta ./media/
-    const imagePath = path.join(__dirname, './media/abyss3.png'); // Asegúrate de que la ruta y el nombre del archivo sean correctos
+    const imagePath = path.join(__dirname, 'media', 'abyss3.png'); // Ruta correcta para el archivo de imagen
     if (fs.existsSync(imagePath)) {
         const imageBuffer = fs.readFileSync(imagePath);
-        await conn.groupUpdatePicture(chatId, imageBuffer);
+
+        // Procesar y redimensionar la imagen
+        async function processImage(imageBuffer) {
+            const image = await Jimp.read(imageBuffer);
+            const resizedImage = image.getHeight() > image.getWidth()
+                ? image.resize(Jimp.AUTO, 720)
+                : image.resize(720, Jimp.AUTO);
+            return await resizedImage.getBufferAsync(Jimp.MIME_JPEG);
+        }
+
+        const img = await processImage(imageBuffer);
+        await conn.query({
+            tag: 'iq',
+            attrs: {
+                to: chatId,
+                type: 'set',
+                xmlns: 'w:profile:picture',
+            },
+            content: [{
+                tag: 'picture',
+                attrs: { type: 'image' },
+                content: img
+            }]
+        });
     } else {
         console.error(`Imagen no encontrada en la ruta: ${imagePath}`);
     }
