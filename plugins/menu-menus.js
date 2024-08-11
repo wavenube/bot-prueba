@@ -167,7 +167,7 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
     }
 text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
 
-let pp = './Menu2.jpg'
+let pp = './media/abyss.png'
 conn.sendFile(m.chat, pp, 'menu.jpg', text.trim(), m, null, rpl)
 m.react('🙌') 
 } catch (e) {
