@@ -166,7 +166,8 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
       readmore: readMore
     }
 text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
-let pp = './media/abyss5.png'
+
+let pp = './media/abyss.png'
 conn.sendFile(m.chat, pp, 'menu.jpg', text.trim(), m, null, rpl)
 m.react('🙌') 
 } catch (e) {
@@ -176,7 +177,7 @@ throw e
 handler.help = ['help']
 handler.tags = ['main']
 //handler.command = ['menucompleto', 'help', 'fullmenu'] 
-handler.command = /^(allmenu|allmenú|allmemu|allmemú|allhelp|allinfo|allcomandos|2help|menu1.2|ayuda|commands|commandos|m|\?)$/i
+handler.command = /^(menu|menú|memu|memú|help|info|comandos|2help|menu1.2|ayuda|commands|commandos|m|\?)$/i
 handler.register = false
 
 handler.exp = 3
