@@ -3,7 +3,13 @@ import { join } from 'path'
 import fetch from 'node-fetch'
 import moment from 'moment-timezone'
 import { xpRange } from '../lib/levelling.js'
-//import { plugins } from '../lib/plugins.js'
+
+// Definición de __dirname en caso de que estés utilizando ES modules
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = join(__filename, '..');
+
+// Definición de las etiquetas del menú
 let fecha = moment.tz('America/Bogota').format('DD/MM/YYYY')
 let hora = moment.tz('America/Argentina/Buenos_Aires').format('LT')
 let tags = {
